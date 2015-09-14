@@ -28,6 +28,16 @@ include RandomData
    )
  end
  
+ Post.create!(
+     title: "My Unique Title",
+     body:  "My Unique Body"
+     )
+
+ Comment.create!(
+     post: posts.sample,
+     body:  "My Unique Body Comments"
+     )
+
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
