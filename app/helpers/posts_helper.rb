@@ -4,7 +4,7 @@ module PostsHelper
         output = post.title
         if post.id % 5 == 0 
            output = "<strong>#{post.censored_title}</strong>"
-       end
+        end
        output.html_safe
     end
 end
