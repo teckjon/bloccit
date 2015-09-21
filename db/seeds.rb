@@ -28,6 +28,14 @@ include RandomData
    )
  end
  
+ 20.times do
+   Question.create!(
+     title: Randomdata.random_sentence,
+     body:  Randomdata.random_paragraph,
+     resolved: false
+   )
+ end
+=begin 
  Post.create!(
      title: "My Unique Title",
      body:  "My Unique Body"
@@ -37,7 +45,16 @@ include RandomData
      post: posts.sample,
      body:  "My Unique Body Comments"
      )
+ 
+ Question.create!(
+     question: "My Question",
+     body: "My Unique Question Comments"
+  )
+=end
 
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
+ puts "#{Question.count} questions created"
+
+ 
