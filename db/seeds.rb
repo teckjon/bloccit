@@ -30,8 +30,8 @@ include RandomData
  
  20.times do
    Question.create!(
-     title: Randomdata.random_sentence,
-     body:  Randomdata.random_paragraph,
+     title: RandomData.random_sentence,
+     body:  RandomData.random_paragraph,
      resolved: false
    )
  end
