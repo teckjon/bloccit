@@ -38,7 +38,7 @@ class SponsoredPostsController < ApplicationController
   end
   
   def destroy
-     @topic = Topic.find(params[:id])
+     @sponsored_post = SponsoredPost.find(params[:id])
  
      if @topic.destroy
        flash[:notice] = "\"#{@topic.name}\" was deleted successfully."
