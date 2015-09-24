@@ -45,5 +45,13 @@ RSpec.describe User, type: :model do
        expect(user_with_invalid_email_format).to_not be_valid
      end
  
-   end   
+   end 
+   
+   describe "callbacks" do
+      let(:user_with_malformed_name) { User.create!(name: "bloCCit user", email: "email@email.com", password: "password" )}
+      
+      it "should reformat a poorly formed name" do
+         expect(user_with_malformed_name.name).to eq("Bloccit User") 
+      end
+   end
  end
