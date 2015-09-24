@@ -7,6 +7,16 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 include RandomData
 
+ # Create Users
+ 5.times do
+   user = User.create!(
+ # #3
+   name:     RandomData.random_name,
+   email:    RandomData.random_email,
+   password: RandomData.random_sentence
+   )
+ end
+ users = User.all
  # Create Topics
  15.times do
    Topic.create!(
@@ -21,6 +31,7 @@ include RandomData
  # #1
    Post.create!(
  # #2
+     user:   users.sample, 
      topic: topics.sample,
      title:  RandomData.random_sentence,
      body:   RandomData.random_paragraph
@@ -47,8 +58,15 @@ include RandomData
      post: posts.sample,
      body:  "My Unique Body Comments"
      )
+     
+ user = User.first
+ user.update_attributes!(
+   email: 'youremail.com', # replace this with your personal email
+   password: 'helloworld'
+ )     
 
  puts "Seed finished"
+ puts "#{User.count} users created" 
  puts "#{Topic.count} topics created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
