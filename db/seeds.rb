@@ -55,6 +55,7 @@ include RandomData
      )
 
  Comment.create!(
+     user: users.sample,  
      post: posts.sample,
      body:  "My Unique Body Comments"
      )
