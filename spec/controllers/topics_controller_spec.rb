@@ -32,7 +32,7 @@ require 'rails_helper'
        expect(assigns(:topic)).to eq(my_topic)
      end
    end
-      
+
    describe "GET new" do
      it "returns http success" do
        get :new
