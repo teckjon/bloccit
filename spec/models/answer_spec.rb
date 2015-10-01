@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-    let(:answer) { answer.create!(body: "New Post Body")}
-    let(:question) { question.create!(body: "Question body", answer: answer)}
+
+    let(:question) { Question.create!(body: "Question body", title: "This is my title")}
+    let(:answer) { Answer.create!(body: "New Post Body", question: question)}
     
     describe "attributes" do
        
         it "should respond to body" do
-            expect(Question).to respond_to(:body)
+            expect(answer).to respond_to(:body)
         end
     end
 end
