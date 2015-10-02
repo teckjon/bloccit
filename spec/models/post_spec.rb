@@ -5,7 +5,9 @@ RSpec.describe Post, type: :model do
    let(:topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
    let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
    let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
-
+   
+   let(:after_post) { Post.new(title: RandomData.random_sentence, body: RandomData.random_paragraph, topic: topic, user: user) }
+   
    it { should have_many(:labelings) }
    it { should have_many(:labels).through(:labelings) }
    
@@ -79,5 +81,12 @@ RSpec.describe Post, type: :model do
          expect(post.rank).to eq (old_rank - 1)
        end
      end     
+   end
+   
+   describe "after_post" do
+      it "sends an email to the owner of the post" do
+         expect(FavoriteMailer).to receive(:new_post).with(:after_post).and_return(double(deliver_now: true))
+         after_post.save
+      end
    end   
 end
