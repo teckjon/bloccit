@@ -47,5 +47,13 @@
          expect(Topic.visible_to(nil)).to eq([@public_topic])
        end
      end
-   end   
+   
+     describe "publicly_viewable(user)" do
+        it "returns all public topics" do
+         user = User.new
+         expect(Topic.visible_to(user)).to eq(Topic.all)
+        end
+     end
+        
+   end 
  end
